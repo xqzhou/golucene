@@ -12,7 +12,7 @@ func TestIndex(t *testing.T) {
 	indexWriter := index.NewIndexWriter(directory)
 	d := document.NewDocument()
 	d.AddField(document.NewField("id", "1"))
-	d.AddField(document.NewField("country", "2"))
+	d.AddField(document.NewField("country", "China"))
 	indexWriter.AddDocument(d)
 	indexWriter.Close()
 }

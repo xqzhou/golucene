@@ -6,19 +6,21 @@ import (
 )
 
 type IndexWriter struct {
-	directory store.Directory
+	directory      store.Directory
+	documentWriter *DocumentWriter
 }
 
 func NewIndexWriter(directory store.Directory) *IndexWriter {
 	return &IndexWriter{
-		directory: directory,
+		directory:      directory,
+		documentWriter: NewDocumentWriter(directory),
 	}
 }
 
 func (w *IndexWriter) AddDocument(d *document.Document) {
-
+	w.documentWriter.AddDocument(d)
 }
 
 func (w *IndexWriter) Close() {
-
+	w.documentWriter.Flush()
 }
